@@ -15,6 +15,6 @@ quote_type = single
 max_line_length = off
 trim_trailing_whitespace = false
 
-123
+0123
 456
 789
