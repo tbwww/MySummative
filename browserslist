@@ -1,12 +1,24 @@
-# This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
-# For additional information regarding the format and rule options, please see:
-# https://github.com/browserslist/browserslist#queries
+isloggedin = False
 
-# You can see what browsers were selected by your queries by running:
-#   npx browserslist
-
-> 0.5%
-last 2 versions
-Firefox ESR
-not dead
-not IE 9-11 # For IE 9-11 support, remove 'not'.
+def try_login(username,password):
+    checking = open("username_password_database.txt",'r')
+    username = username+"\n"
+    password = password+"\n"
+    done = False
+    while( not done):
+        line = checking.readline()
+        if line == username:
+            database_password = checking.readline()
+            if (database_password == password):
+                print("welcome! we are able to log you in")
+                isloggedin = True
+                done = True
+                return True
+            else:
+                print("sorry your login credentials do not match out database")
+                done = True
+                return False
+        if (line == ""):
+            print("sorry, it appears your username does not exist in our database")
+            done = True
+            return False
